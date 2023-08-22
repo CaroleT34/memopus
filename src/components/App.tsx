@@ -2,19 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Columns from "./Columns";
 import ColumnInterface from "../Interface/ColumnInterface";
-import Data from "./services/Data";
+import DataColumn from "../services/DataColumn";
 
 function App() {
   const [columns, setColumns] = useState<ColumnInterface[]>([]);
 
   useEffect(()=> {
     (async () => {
-      const loadColumns: ColumnInterface[] = await Data.loadColumns();
+      const loadColumns: ColumnInterface[] = await DataColumn.loadColumns();
       setColumns(loadColumns);
     })();
   }, [])
 
-  console.log(columns);
   return (
     <div className="App">
       <header className="col d-flex justify-content-center bg-light h2 p-4" > Memopus </header>
