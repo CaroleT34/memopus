@@ -3,9 +3,11 @@ import ColumnInterface from "../Interface/ColumnInterface";
 import DataCard from "../services/DataCard";
 import CardInterface from "../Interface/CardInterface";
 import Cards from "./Cards";
+import Modal from "./Modal";
 
 const Columns = (props: ColumnInterface): React.JSX.Element => {
   const [cards, setCards] = useState<CardInterface[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -22,19 +24,22 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
           className="btn btn-warning mx-3 col-1"
           title="ajouter une carte"
           //onClick={AddCard}
+          onClick={() => setIsOpen(true)}
         >
           +
         </button>
         <div className="h6 text-center col">{props.label}</div>
       </div>
-      <div className="d-flex my-4 justify-content-center">
+      <div className="row d-flex my-4 justify-content-center">
         {cards.map(
           (card) =>
             card.column === props.id && <Cards key={card.id} {...card} />
         )}
       </div>
+      {isOpen && <Modal setIsOpen={setIsOpen} columnId={props.id}/>}
     </div>
   );
 };
 
 export default Columns;
+

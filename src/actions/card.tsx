@@ -1,0 +1,26 @@
+import {ActionFunctionArgs} from 'react-router-dom';
+import DataCard from '../services/DataCard';
+import CardInterface from '../Interface/CardInterface';
+
+export const actionAdd = async({request}: ActionFunctionArgs) => {
+  console.log(`Dans actionAdd`);
+  // chargement des données qui sont issues du formulaire
+  const formData = await request.formData();
+  const card_question = formData.get("card_question") as string;
+  const card_answer = formData.get("card_answer") as string;
+  const column_id = formData.get("column_id")as string;
+
+   const newCard: CardInterface = {
+    id: 0,
+    uid: "", 
+    question: card_question,
+    answer: card_answer,
+    column: parseInt(column_id), 
+    selected: false, 
+    tid: 0, //theme_id
+  };
+
+  await DataCard.addCard(newCard);
+  window.location.reload();
+  return null;
+}

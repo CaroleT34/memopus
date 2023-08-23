@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Cards = (props: CardInterface): React.JSX.Element => {
   const [showResponse, setShowResponse] = useState(false);
-
+  
   return (
-    <div className="card text-center">
+    <div className="card text-center my-2 p-0">
       <div className="card-header">{props.question}</div>
       <div className="card-body">
         <h6
