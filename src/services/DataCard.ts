@@ -45,4 +45,24 @@ export default class DataCard {
         console.error(error);
       });
   }
+
+  static async deleteCard(idCard: number): Promise<any> {
+    // Pour rappel, fetch renvoie une promesse
+    return fetch(this.url + "/" + idCard, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((cards) => {
+        return cards;
+      })
+      .catch((error) => {
+        console.error("Erreur attrapée dans deleteCard", error);
+      });
+  }
 }

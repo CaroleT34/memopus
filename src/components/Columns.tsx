@@ -16,6 +16,19 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
     })();
   }, []);
 
+  const handleClickDelete = (event: React.MouseEvent<HTMLButtonElement>, idCard: number): void => {
+    if (window.confirm("Voulez-vous supprimer cette tâche ?")) {
+      const cardsCopy = cards.filter(card => {
+        if (idCard !== card.id) {
+          DataCard.deleteCard(idCard);
+          return card;
+        }
+
+      });
+      setCards(cardsCopy);
+    }
+  }
+
   return (
     <div className="col-3">
       <div className="row d-flex justify-content-center align-items-end">
@@ -33,7 +46,7 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
       <div className="row d-flex my-4 justify-content-center">
         {cards.map(
           (card) =>
-            card.column === props.id && <Cards key={card.id} {...card} />
+            card.column === props.id && <Cards key={card.id} {...card} onClickDelete={handleClickDelete}/>
         )}
       </div>
       {isOpen && <Modal setIsOpen={setIsOpen} columnId={props.id}/>}

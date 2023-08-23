@@ -7,3 +7,10 @@ export default interface CardInterface {
   selected: boolean;
   tid: number;
 }
+
+export interface CardInterfaceProps extends CardInterface {
+  onClickDelete: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    idCard: number
+  ) => void;
+}

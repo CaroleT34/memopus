@@ -68,15 +68,6 @@
       "tid": 724
     },
     {
-      "id": 23,
-      "uid": "",
-      "question": "???",
-      "answer": "!!!",
-      "column": 1,
-      "selected": false,
-      "tid": 0
-    },
-    {
       "id": 24,
       "uid": "",
       "question": "Propriété de positionnement pour faire \"flotter\" un élément à gauche ?",
@@ -95,46 +86,10 @@
       "tid": 0
     },
     {
-      "id": 26,
-      "uid": "",
-      "question": "???",
-      "answer": "!!!",
-      "column": 2,
-      "selected": false,
-      "tid": 0
-    },
-    {
-      "id": 27,
-      "uid": "",
-      "question": "???",
-      "answer": "float: left;",
-      "column": 2,
-      "selected": false,
-      "tid": 0
-    },
-    {
-      "id": 28,
-      "uid": "",
-      "question": "Qui ?",
-      "answer": "float: left;",
-      "column": 2,
-      "selected": false,
-      "tid": 0
-    },
-    {
       "id": 29,
       "uid": "",
       "question": "Propriété de positionnement pour faire \"flotter\" un élément à gauche ?",
       "answer": "float: left;",
-      "column": 4,
-      "selected": false,
-      "tid": 0
-    },
-    {
-      "id": 30,
-      "uid": "",
-      "question": "???",
-      "answer": "!!!",
       "column": 4,
       "selected": false,
       "tid": 0

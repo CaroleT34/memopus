@@ -1,11 +1,11 @@
 import { useState } from "react";
-import CardInterface from "../Interface/CardInterface";
+import CardInterface, {CardInterfaceProps} from "../Interface/CardInterface";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Cards = (props: CardInterface): React.JSX.Element => {
+const Cards = (props: CardInterfaceProps): React.JSX.Element => {
   const [showResponse, setShowResponse] = useState(false);
-  
+
   return (
     <div className="card text-center my-2 p-0">
       <div className="card-header">{props.question}</div>
@@ -40,7 +40,9 @@ const Cards = (props: CardInterface): React.JSX.Element => {
           type="button"
           className="btn btn-danger col-2 mx-1"
           title="supprimer la carte"
-          //onClick={deleteCard}
+          onClick={(event) => {
+            props.onClickDelete(event, props.id);
+          }}
         >
           <FontAwesomeIcon icon={faTrash} />
         </button>
