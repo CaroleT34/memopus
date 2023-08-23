@@ -16,6 +16,8 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
     })();
   }, []);
 
+  console.log(props);
+  
   const handleClickDelete = (event: React.MouseEvent<HTMLButtonElement>, idCard: number): void => {
     if (window.confirm("Voulez-vous supprimer cette tâche ?")) {
       const cardsCopy = cards.filter(card => {
