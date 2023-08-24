@@ -3,7 +3,8 @@ import ColumnInterface from "../Interface/ColumnInterface";
 import DataCard from "../services/DataCard";
 import CardInterface from "../Interface/CardInterface";
 import Cards from "./Cards";
-import Modal from "./Modal";
+import ModalAdd from "./ModalAdd";
+import ModalDelete from "./ModalDelete";
 
 const Columns = (props: ColumnInterface): React.JSX.Element => {
   const [cards, setCards] = useState<CardInterface[]>([]);
@@ -26,15 +27,17 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
     event: React.MouseEvent<HTMLButtonElement>,
     idCard: number
   ): void => {
-    if (window.confirm("Voulez-vous supprimer cette tâche ?")) {
-      const cardsCopy = cards.filter((card) => {
-        if (idCard !== card.id) {
-          DataCard.deleteCard(idCard);
-          return card;
-        }
-      });
-      setCards(cardsCopy);
-    }
+    
+   
+    // if (window.confirm("Voulez-vous supprimer cette tâche ?")) {
+    //   const cardsCopy = cards.filter((card) => {
+    //     if (idCard !== card.id) {
+    //       DataCard.deleteCard(idCard);
+    //       return card;
+    //     }
+    //   });
+    //   setCards(cardsCopy);
+    // }
   };
 
   return (
@@ -63,7 +66,7 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
             )
         )}
       </div>
-      {isOpen && <Modal setIsOpen={setIsOpen} column={props} />}
+      {isOpen && <ModalAdd setIsOpen={setIsOpen} column={props} />}
     </div>
   );
 };

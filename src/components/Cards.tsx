@@ -2,9 +2,11 @@ import { useState } from "react";
 import {CardInterfaceProps} from "../Interface/CardInterface";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ModalDelete from "./ModalDelete";
 
 const Cards = (props: CardInterfaceProps): React.JSX.Element => {
   const [showResponse, setShowResponse] = useState(false);
+  const [showingModalDelete, setShowingModalDelete] = useState(false);
 
   return (
     <div className="card text-center my-2 p-0">
@@ -40,13 +42,15 @@ const Cards = (props: CardInterfaceProps): React.JSX.Element => {
           type="button"
           className="btn btn-danger col-2 mx-1"
           title="supprimer la carte"
-          onClick={(event) => {
-            props.onClickDelete(event, props.id);
-          }}
+          // onClick={(event) => {
+          //   props.onClickDelete(event, props.id);
+          // }}
+          onClick={() => setShowingModalDelete(!showingModalDelete)}
         >
           <FontAwesomeIcon icon={faTrash} />
         </button>
       </div>
+      {showingModalDelete &&  <ModalDelete setShowingModalDelete={setShowingModalDelete} idCard={props.id}/>}
     </div>
   );
 };

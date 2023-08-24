@@ -24,3 +24,13 @@ export const actionAdd = async ({ request }: ActionFunctionArgs) => {
   window.location.reload();
   return null;
 };
+
+export const actionDelete = async ({ request }: ActionFunctionArgs) => {
+  // chargement des données qui sont issues du formulaire
+  const formData = await request.formData();
+  const idCard = formData.get("card_id") as string;
+
+  await DataCard.deleteCard(parseInt(idCard));
+  window.location.reload();
+  return null;
+};

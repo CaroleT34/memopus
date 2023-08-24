@@ -77,24 +77,6 @@
       "tid": 724
     },
     {
-      "id": 25,
-      "uid": "",
-      "question": "Propriété de positionnement pour faire \"flotter\" un élément à gauche ?",
-      "answer": "float: left;",
-      "column": 2,
-      "selected": false,
-      "tid": 724
-    },
-    {
-      "id": 29,
-      "uid": "",
-      "question": "Propriété de positionnement pour faire \"flotter\" un élément à gauche ?",
-      "answer": "float: left;",
-      "column": 4,
-      "selected": false,
-      "tid": 724
-    },
-    {
       "id": 31,
       "uid": "",
       "question": "Propriété de positionnement pour faire \"flotter\" un élément à gauche ?",

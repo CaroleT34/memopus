@@ -10,7 +10,7 @@ import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
-import { actionAdd as addCard } from "./actions/card";
+import { actionAdd as addCard, actionDelete as deleteCard } from "./actions/card";
 import Connexion from "./components/Connexion";
 import { loader as connexionLoader } from "./loaders/connexion";
 
@@ -28,6 +28,7 @@ const router = createBrowserRouter(
         loader={connexionLoader}
       />
       <Route path="/add/card" action={addCard} />
+      <Route path="/delete/card" action={deleteCard} />
     </>
   )
 );
