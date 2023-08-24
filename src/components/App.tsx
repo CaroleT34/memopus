@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./App.css";
 import Columns from "./Columns";
 import ColumnInterface from "../Interface/ColumnInterface";
@@ -7,10 +7,13 @@ import DataColumn from "../services/DataColumn";
 import TermInterface from "../Interface/TermInterface";
 import DataTerm from "../services/DataTerm";
 import Terms from "./Terms";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [columns, setColumns] = useState<ColumnInterface[]>([]);
   const [terms, setTerms] = useState<TermInterface[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -60,8 +63,16 @@ function App() {
 
   return (
     <div className="App">
-      <header className="col d-flex justify-content-center bg-light h2 p-4">
-        Memopus
+      <header className="d-flex justify-content-center bg-light p-4">
+        <div className="h2 col-10 text-center">Memopus</div>
+        <div
+          className="d-flex align-items-center justify-content-center flex-row"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
+          <p className="my-0 mx-2">Déconnexion</p>
+          <FontAwesomeIcon icon={faRightFromBracket} />
+        </div>
       </header>
       <nav className="d-flex justify-content-center">
         {terms.map((term) => (

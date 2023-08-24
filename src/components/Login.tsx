@@ -4,18 +4,19 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 const Login = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  
+  const [authenticationResult, setAuthenticationResult] = useState("");
+
   const users: any = useLoaderData();
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(login, users[0].username)
-    console.log(password, users[0].pwd)
+    console.log(login, users[0].username);
+    console.log(password, users[0].pwd);
     if (login === users[0].username && password === users[0].pwd) {
       navigate("/home");
     } else {
-      console.log("errorAuthn")
+      setAuthenticationResult("Error");
     }
   };
 
@@ -48,9 +49,14 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="btn btn-outline-secondary my-3" type="submit" >
+          <button className="btn btn-outline-secondary my-3" type="submit">
             Connexion
           </button>
+          {authenticationResult === "Error" && (
+          <div className="alert alert-danger" role="alert">
+            Échec de l'authentification. Veuillez réessayer.
+          </div>
+        )}
         </form>
       </div>
     </div>
