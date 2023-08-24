@@ -26,19 +26,38 @@ function App() {
     })();
   }, []);
 
-
-  //TODO: Voir pour limiter son appel!
   useEffect(() => {
-    const updatedColumns = columns.map(column => {
-      return {
-        ...column,
-        terms: terms,
-      };;
-    });
-    setColumns(updatedColumns);
+    (async () => {
+      const updatedColumns = columns.map((column) => {
+        return {
+          ...column,
+          terms: terms,
+        };
+      });
+      setColumns(updatedColumns);
+    })();
   }, [terms]);
 
-  
+  const handleClickChooseTerm = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    idTerm: number
+  ): void => {
+    event.preventDefault();
+
+    //Change selectedTerms
+    terms.map((term) => {
+      if (term.id === idTerm) {
+        const updatedTerms = terms.map((term) => {
+          return {
+            ...term,
+            selected: term.id === idTerm,
+          };
+        });
+        setTerms(updatedTerms);
+      }
+    });
+  };
+
   return (
     <div className="App">
       <header className="col d-flex justify-content-center bg-light h2 p-4">
@@ -46,9 +65,18 @@ function App() {
       </header>
       <nav className="d-flex justify-content-center">
         {terms.map((term) => (
-          <Terms key={term.id} {...term} />
+          <Terms
+            key={term.uid}
+            {...term}
+            onClickChooseTerm={handleClickChooseTerm}
+          />
         ))}
       </nav>
+      {terms.map((term) => (
+        <section className="row" key={term.id}>
+          {term.selected && <h1 className="col-8 m-auto my-3">{term.name}</h1>}
+        </section>
+      ))}
       <div className="row m-auto">
         {columns.map((column) => (
           <Columns key={column.id} {...column} />

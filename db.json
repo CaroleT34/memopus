@@ -74,7 +74,7 @@
       "answer": "float: left;",
       "column": 2,
       "selected": false,
-      "tid": 0
+      "tid": 724
     },
     {
       "id": 25,
@@ -83,7 +83,7 @@
       "answer": "float: left;",
       "column": 2,
       "selected": false,
-      "tid": 0
+      "tid": 724
     },
     {
       "id": 29,
@@ -92,7 +92,7 @@
       "answer": "float: left;",
       "column": 4,
       "selected": false,
-      "tid": 0
+      "tid": 724
     },
     {
       "id": 31,
@@ -101,7 +101,7 @@
       "answer": "!!!",
       "column": 3,
       "selected": false,
-      "tid": 0
+      "tid": 194
     }
   ]
 }

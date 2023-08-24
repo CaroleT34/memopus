@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CardInterface, {CardInterfaceProps} from "../Interface/CardInterface";
+import {CardInterfaceProps} from "../Interface/CardInterface";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

@@ -10,26 +10,32 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      const loadCards: CardInterface[] = await DataCard.loadCards();
-      setCards(loadCards);
-    })();
-  }, []);
+    props.terms &&
+      props.terms.map((term) => {
+        if (term.selected) {
+          (async () => {
+            const loadCards: CardInterface[] =
+              await DataCard.loadCardsbyTermsId(term);
+            setCards(loadCards);
+          })();
+        }
+      });
+  }, [props.terms]);
 
-  console.log(props);
-  
-  const handleClickDelete = (event: React.MouseEvent<HTMLButtonElement>, idCard: number): void => {
+  const handleClickDelete = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    idCard: number
+  ): void => {
     if (window.confirm("Voulez-vous supprimer cette tâche ?")) {
-      const cardsCopy = cards.filter(card => {
+      const cardsCopy = cards.filter((card) => {
         if (idCard !== card.id) {
           DataCard.deleteCard(idCard);
           return card;
         }
-
       });
       setCards(cardsCopy);
     }
-  }
+  };
 
   return (
     <div className="col-3">
@@ -48,13 +54,18 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
       <div className="row d-flex my-4 justify-content-center">
         {cards.map(
           (card) =>
-            card.column === props.id && <Cards key={card.id} {...card} onClickDelete={handleClickDelete}/>
+            card.column === props.id && (
+              <Cards
+                key={card.id}
+                {...card}
+                onClickDelete={handleClickDelete}
+              />
+            )
         )}
       </div>
-      {isOpen && <Modal setIsOpen={setIsOpen} columnId={props.id}/>}
+      {isOpen && <Modal setIsOpen={setIsOpen} columnId={props.id} />}
     </div>
   );
 };
 
 export default Columns;
-

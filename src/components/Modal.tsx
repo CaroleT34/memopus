@@ -10,7 +10,6 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ setIsOpen, columnId }) => {
   const fetcher = useFetcher();
-  console.log(columnId);
   return (
     <>
       <div className="darkBG" onClick={() => setIsOpen(false)} />

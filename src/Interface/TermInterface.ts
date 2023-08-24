@@ -5,3 +5,10 @@ export default interface TermInterface {
   open: boolean;
   selected: boolean;
 }
+
+export interface TermInterfaceProps extends TermInterface {
+  onClickChooseTerm: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    idTerm: number
+  ) => void;
+}

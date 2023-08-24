@@ -1,15 +1,10 @@
 import CardInterface from "../Interface/CardInterface";
+import TermInterface from "../Interface/TermInterface";
+import Terms from './../components/Terms';
 
 export default class DataCard {
   private static instance: DataCard;
   static url = "http://localhost:3001/cards";
-
-  public static getInstance(): DataCard {
-    if (!DataCard.instance) {
-      DataCard.instance = new DataCard();
-    }
-    return DataCard.instance;
-  }
 
   static async loadCards(): Promise<CardInterface[]> {
     // Pour rappel, fetch renvoie une promesse
@@ -23,6 +18,17 @@ export default class DataCard {
       .catch((error) => {
         console.error("Erreur attrapée dans loadCards", error);
       });
+  }
+
+  static async loadCardsbyTermsId(terms: TermInterface): Promise<CardInterface[]> {
+    // Pour rappel, fetch renvoie une promesse
+    try {
+      const cards = await this.loadCards(); // Await the asynchronous call
+      return cards.filter(card => card.tid === terms.id);
+    } catch (error) {
+      console.error("Erreur attrapée dans loadCardsbyTermsId", error);
+      throw error; // Rethrow the error if needed
+    }
   }
 
   static async addCard(card: CardInterface): Promise<any> {
