@@ -1,3 +1,5 @@
+import TermInterface from "./TermInterface";
+
 export default interface CardInterface {
   id: number;
   uid: string;

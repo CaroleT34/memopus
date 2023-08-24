@@ -63,7 +63,7 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
             )
         )}
       </div>
-      {isOpen && <Modal setIsOpen={setIsOpen} columnId={props.id} />}
+      {isOpen && <Modal setIsOpen={setIsOpen} column={props} />}
     </div>
   );
 };
