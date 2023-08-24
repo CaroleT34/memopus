@@ -26,4 +26,7 @@ export default class DataUser {
         console.error("Erreur attrapée dans loadUsers", error);
       });
   }
+
 }
+
+

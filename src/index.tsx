@@ -10,8 +10,11 @@ import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
-import { actionAdd as addCard, actionDelete as deleteCard } from "./actions/card";
-import Connexion from "./components/Connexion";
+import {
+  actionAdd as addCard,
+  actionDelete as deleteCard,
+} from "./actions/card";
+import Login from "./components/Login";
 import { loader as connexionLoader } from "./loaders/connexion";
 
 const root = ReactDOM.createRoot(
@@ -21,12 +24,8 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<App />} />
-      <Route
-        path="/connexion"
-        element={<Connexion />}
-        loader={connexionLoader}
-      />
+      <Route path="/" element={<Login />} loader={connexionLoader} />
+      <Route path="/home" element={<App />} />
       <Route path="/add/card" action={addCard} />
       <Route path="/delete/card" action={deleteCard} />
     </>
