@@ -1,6 +1,5 @@
 import CardInterface from "../Interface/CardInterface";
 import TermInterface from "../Interface/TermInterface";
-import Terms from './../components/Terms';
 
 export default class DataCard {
   private static instance: DataCard;

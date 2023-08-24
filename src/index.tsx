@@ -4,28 +4,36 @@ import {
   createRoutesFromElements,
   createBrowserRouter,
   Route,
-  RouterProvider
-} from 'react-router-dom';
+  RouterProvider,
+} from "react-router-dom";
 import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
-import {actionAdd as addCard} from './actions/card';
+import { actionAdd as addCard } from "./actions/card";
+import Connexion from "./components/Connexion";
+import { loader as connexionLoader } from "./loaders/connexion";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<App />}/>
+      <Route path="/" element={<App />} />
+      <Route
+        path="/connexion"
+        element={<Connexion />}
+        loader={connexionLoader}
+      />
       <Route path="/add/card" action={addCard} />
     </>
   )
-)
+);
 root.render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

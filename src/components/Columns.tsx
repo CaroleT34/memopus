@@ -51,7 +51,7 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
         </button>
         <div className="h6 text-center col">{props.label}</div>
       </div>
-      <div className="row d-flex my-4 justify-content-center">
+      <div className="row d-flex my-4 mx-2 justify-content-center">
         {cards.map(
           (card) =>
             card.column === props.id && (
