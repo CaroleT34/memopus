@@ -4,7 +4,6 @@ import DataCard from "../services/DataCard";
 import CardInterface from "../Interface/CardInterface";
 import Cards from "./Cards";
 import ModalAdd from "./ModalAdd";
-import ModalDelete from "./ModalDelete";
 
 const Columns = (props: ColumnInterface): React.JSX.Element => {
   const [cards, setCards] = useState<CardInterface[]>([]);
@@ -43,7 +42,7 @@ const Columns = (props: ColumnInterface): React.JSX.Element => {
             card.column === props.id && (
               <Cards
                 key={card.id}
-                {...card}
+                {...card }
               />
             )
         )}

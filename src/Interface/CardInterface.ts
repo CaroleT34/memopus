@@ -8,9 +8,9 @@ export default interface CardInterface {
   tid: number;
 }
 
-export interface CardInterfaceProps extends CardInterface {
-  onClickDelete: (
-    event: React.MouseEvent<HTMLButtonElement>,
-    idCard: number
-  ) => void;
-}
+// export interface CardInterfaceProps extends CardInterface {
+//   onClickDelete: (
+//     event: React.MouseEvent<HTMLButtonElement>,
+//     idCard: number
+//   ) => void;
+// }
