@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import {
   actionAdd as addCard,
   actionDelete as deleteCard,
+  actionUpdate as updateCard,
 } from "./actions/card";
 import Login from "./components/Login";
 import { loader as connexionLoader } from "./loaders/connexion";
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="/home" element={<App />} loader={combinedLoader}/>
       <Route path="/add/card" action={addCard} />
       <Route path="/delete/card" action={deleteCard} />
+      <Route path="/update/card" action={updateCard} />
     </>
   )
 );

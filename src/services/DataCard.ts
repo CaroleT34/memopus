@@ -19,11 +19,13 @@ export default class DataCard {
       });
   }
 
-  static async loadCardsbyTermsId(terms: TermInterface): Promise<CardInterface[]> {
+  static async loadCardsbyTermsId(
+    terms: TermInterface
+  ): Promise<CardInterface[]> {
     // Pour rappel, fetch renvoie une promesse
     try {
       const cards = await this.loadCards(); // Await the asynchronous call
-      return cards.filter(card => card.tid === terms.id);
+      return cards.filter((card) => card.tid === terms.id);
     } catch (error) {
       console.error("Erreur attrapée dans loadCardsbyTermsId", error);
       throw error; // Rethrow the error if needed
@@ -68,6 +70,29 @@ export default class DataCard {
       })
       .catch((error) => {
         console.error("Erreur attrapée dans deleteCard", error);
+      });
+  }
+
+  static async updateCard(
+    card: CardInterface
+  ): Promise<any> {
+    // Pour rappel, fetch renvoie une promesse
+    return fetch(this.url + "/" + card.id, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
+      body: JSON.stringify(card),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((tasks) => {
+        return tasks;
+      })
+      .catch((error) => {
+        console.error("Erreur attrapée dans ValidateTasks", error);
       });
   }
 }

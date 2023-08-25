@@ -72,9 +72,9 @@
       "uid": "",
       "question": "Propriété de positionnement pour faire \"flotter\" un élément à gauche ?",
       "answer": "float: left;",
-      "column": 2,
+      "column": 1,
       "selected": false,
-      "tid": 724
+      "tid": 194
     },
     {
       "id": 31,

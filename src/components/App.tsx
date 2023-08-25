@@ -16,12 +16,14 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const updatedColumns = arrayOfColumnsAndTerms.columns.map((col: ColumnInterface) => {
-        return {
-          ...col,
-          terms: terms,
-        };
-      });
+      const updatedColumns = arrayOfColumnsAndTerms.columns.map(
+        (col: ColumnInterface) => {
+          return {
+            ...col,
+            terms: terms,
+          };
+        }
+      );
       setColumns(updatedColumns);
     })();
   }, [terms]);
@@ -49,8 +51,6 @@ function App() {
       }
     });
   };
-
-  console.log(terms);
 
   return (
     <div className="App">

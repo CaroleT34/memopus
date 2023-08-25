@@ -19,10 +19,10 @@ const Modal: React.FC<ModalAddInterface> = ({ setIsOpen, column }) => {
           </button>
           <fetcher.Form action="/add/card" method="POST">
             <div className="modalContent">
-              <label htmlFor="card-question">Question</label>
-              <input type="text" name="card_question" id="card-question" />
-              <label htmlFor="card-answer">Réponse</label>
-              <input type="text" name="card_answer" id="card-answer" />
+              <label className="col-2" htmlFor="card-question">Question</label>
+              <input className="form-control" type="text" name="card_question" id="card-question" />
+              <label className="col-2" htmlFor="card-answer">Réponse</label>
+              <input className="form-control" type="text" name="card_answer" id="card-answer" />
               <input type="hidden" name="column_id" value={column.id} />
               <input type="hidden" name="term_id" value={column.terms[0].id} />
             </div>
