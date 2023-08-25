@@ -1,10 +1,10 @@
 import { useState } from "react";
-import {CardInterfaceProps} from "../Interface/CardInterface";
+import CardInterface, {CardInterfaceProps} from "../Interface/CardInterface";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalDelete from "./ModalDelete";
 
-const Cards = (props: CardInterfaceProps): React.JSX.Element => {
+const Cards = (props: CardInterface): React.JSX.Element => {
   const [showResponse, setShowResponse] = useState(false);
   const [showingModalDelete, setShowingModalDelete] = useState(false);
 
