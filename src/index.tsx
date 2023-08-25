@@ -17,16 +17,23 @@ import {
 import Login from "./components/Login";
 import { loader as connexionLoader } from "./loaders/connexion";
 import { loader as columnLoader } from "./loaders/column";
+import { loader as termLoader } from "./loaders/term";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+async function combinedLoader() {
+  const columns = await columnLoader();
+  const terms = await termLoader();
+  return { columns, terms };
+}
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Login />} loader={connexionLoader} />
-      <Route path="/home" element={<App />} loader={columnLoader} />
+      <Route path="/home" element={<App />} loader={combinedLoader}/>
       <Route path="/add/card" action={addCard} />
       <Route path="/delete/card" action={deleteCard} />
     </>

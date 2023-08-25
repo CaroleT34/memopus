@@ -4,29 +4,19 @@ import "./App.css";
 import Columns from "./Columns";
 import ColumnInterface from "../Interface/ColumnInterface";
 import TermInterface from "../Interface/TermInterface";
-import DataTerm from "../services/DataTerm";
 import Terms from "./Terms";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
+  const arrayOfColumnsAndTerms: any = useLoaderData();
   const [columns, setColumns] = useState<ColumnInterface[]>([]);
   const [terms, setTerms] = useState<TermInterface[]>([]);
   const navigate = useNavigate();
 
-  const column: any = useLoaderData();
-  console.log(column);
-
   useEffect(() => {
     (async () => {
-      const loadTerms: TermInterface[] = await DataTerm.loadTerms();
-      setTerms(loadTerms);
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      const updatedColumns = column.map((col: any) => {
+      const updatedColumns = arrayOfColumnsAndTerms.columns.map((col: ColumnInterface) => {
         return {
           ...col,
           terms: terms,
@@ -35,6 +25,10 @@ function App() {
       setColumns(updatedColumns);
     })();
   }, [terms]);
+
+  useEffect(() => {
+    setTerms(arrayOfColumnsAndTerms.terms);
+  }, []);
 
   const handleClickChooseTerm = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -55,6 +49,8 @@ function App() {
       }
     });
   };
+
+  console.log(terms);
 
   return (
     <div className="App">
