@@ -16,6 +16,7 @@ import {
 } from "./actions/card";
 import Login from "./components/Login";
 import { loader as connexionLoader } from "./loaders/connexion";
+import { loader as columnLoader } from "./loaders/column";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,7 +26,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Login />} loader={connexionLoader} />
-      <Route path="/home" element={<App />} />
+      <Route path="/home" element={<App />} loader={columnLoader} />
       <Route path="/add/card" action={addCard} />
       <Route path="/delete/card" action={deleteCard} />
     </>

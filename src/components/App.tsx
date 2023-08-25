@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import "./App.css";
 import Columns from "./Columns";
 import ColumnInterface from "../Interface/ColumnInterface";
-import DataColumn from "../services/DataColumn";
 import TermInterface from "../Interface/TermInterface";
 import DataTerm from "../services/DataTerm";
 import Terms from "./Terms";
@@ -15,12 +14,8 @@ function App() {
   const [terms, setTerms] = useState<TermInterface[]>([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    (async () => {
-      const loadColumns: ColumnInterface[] = await DataColumn.loadColumns();
-      setColumns(loadColumns);
-    })();
-  }, []);
+  const column: any = useLoaderData();
+  console.log(column);
 
   useEffect(() => {
     (async () => {
@@ -31,9 +26,9 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const updatedColumns = columns.map((column) => {
+      const updatedColumns = column.map((col: any) => {
         return {
-          ...column,
+          ...col,
           terms: terms,
         };
       });
