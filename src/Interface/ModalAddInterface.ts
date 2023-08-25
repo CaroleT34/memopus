@@ -1,7 +1,6 @@
 import ColumnInterface from "./ColumnInterface";
 
-export default interface ModalInterface {
+export default interface ModalAddInterface {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   column: ColumnInterface;
-  idCard?: number;
 }

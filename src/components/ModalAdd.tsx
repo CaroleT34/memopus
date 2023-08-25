@@ -2,9 +2,9 @@ import { useFetcher } from "react-router-dom";
 import "./Modal.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ModalInterface from "../Interface/ModalInterface";
+import ModalAddInterface from "../Interface/ModalAddInterface";
 
-const Modal: React.FC<ModalInterface> = ({ setIsOpen, column }) => {
+const Modal: React.FC<ModalAddInterface> = ({ setIsOpen, column }) => {
   const fetcher = useFetcher();
   return (
     <>

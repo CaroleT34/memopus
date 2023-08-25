@@ -1,9 +1,5 @@
 import { useFetcher } from "react-router-dom";
-
-interface ModalDeleteInterface {
-  setShowingModalDelete: React.Dispatch<React.SetStateAction<boolean>>;
-  idCard: number;
-}
+import ModalDeleteInterface from "../Interface/ModalDeleteInterface";
 
 const ModalDelete: React.FC<ModalDeleteInterface> = ({
   setShowingModalDelete,
